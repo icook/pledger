@@ -18,7 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from pledger.value import Value
 from pledger.tags import TagFilterable
 
 class Entry(TagFilterable):
