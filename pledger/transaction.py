@@ -29,6 +29,7 @@ class UnbalancedTransaction(PledgerException):
         super(UnbalancedTransaction, self).__init__()
 
 class UndefinedTransaction(PledgerException):
+    """ Occurs when multiple entry lines have no amount """
     def __init__(self, tr, index):
         self.tr = tr
         self.index = index

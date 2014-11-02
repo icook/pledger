@@ -58,7 +58,7 @@ class Parser(object):
             transactions = [self.parse_transaction(group) for group in itersplit(f, lines)]
         except PledgerException, e:
             e.filename = filename
-            raise e
+            raise
         return Ledger(filename, [t for t in transactions if t], self)
 
     def parse_entry(self, str):
@@ -117,13 +117,13 @@ class Parser(object):
             return transaction
         except UnbalancedTransaction, e:
             e.line_number = n
-            raise e
+            raise
         except UndefinedTransaction, e:
             e.line_number = line_numbers[e.index]
-            raise e
+            raise
         except MalformedHeader, e:
             e.line_number = n
-            raise e
+            raise
 
     def parse_date(self, str, format="default"):
         try:

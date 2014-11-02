@@ -60,7 +60,7 @@ class PledgerException(Exception):
         self.filename = None
 
     def __str__(self):
-        return "%s (%s:%d)" % (self.__class__, self.filename, self.line_number)
+        return "%s in %s on line %d" % (self.__class__.__name__, self.filename, self.line_number)
 
 class PrefixTree(object):
     def __init__(self, words = []):
