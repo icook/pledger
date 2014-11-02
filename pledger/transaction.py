@@ -47,14 +47,15 @@ class Transaction(TagFilterable):
         i = 0
         for e in self.entries:
             if e.amount is None:
-                if undef: raise UndefinedTransaction(self, i)
+                if undef:
+                    raise UndefinedTransaction(self, i)
                 undef = e
             else:
                 balance += e.amount
             i += 1
         if undef:
             undef.amount = -balance
-        elif not balance.null():
+        elif not balance.null() and len(list(balance.currencies())) == 1:
             raise UnbalancedTransaction(self)
 
     def execute(self, processor):
