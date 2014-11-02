@@ -110,6 +110,7 @@ class Parser(object):
                 raise MalformedHeader()
 
             entries = [self.parse_entry(line) for n, line in lines]
+            entries = [e for e in entries if e is not None]
             line_numbers = [n for n, line in lines]
             transaction = Transaction(entries, date, label)
             if tags: transaction.tags = tags
